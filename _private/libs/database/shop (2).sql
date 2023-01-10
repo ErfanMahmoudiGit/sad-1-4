@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 26, 2022 at 03:50 PM
+-- Generation Time: Jan 10, 2023 at 08:33 PM
 -- Server version: 5.7.40
 -- PHP Version: 8.0.26
 
@@ -25,6 +25,9 @@ DELIMITER $$
 --
 -- Procedures
 --
+DROP PROCEDURE IF EXISTS `AddBook`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AddBook` (IN `p_bookId` VARCHAR(255), IN `p_bookName` VARCHAR(255), IN `p_bookCategory` VARCHAR(255), IN `p_bookPrice` FLOAT(50) UNSIGNED, IN `p_bookCount` INT(30) UNSIGNED, IN `p_bookisActive` BOOLEAN)   INSERT into `book`(book.`book_id`,book.`name`,book.`category`,book.`price`,book.`count`,book.`is_active`) VALUES (p_bookId,p_bookName,p_bookCategory,p_bookPrice,p_bookCount,p_bookisActive)$$
+
 DROP PROCEDURE IF EXISTS `CheckUserPass`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `CheckUserPass` (IN `p_username` VARCHAR(255), IN `P_password` VARCHAR(255))   SELECT * FROM user WHERE user.`username` = p_username AND user.`password` = P_password$$
 
@@ -63,7 +66,8 @@ CREATE TABLE IF NOT EXISTS `book` (
 INSERT INTO `book` (`book_id`, `name`, `category`, `price`, `count`, `is_active`) VALUES
 ('book1', 'riazi1', 'riaziat', 700000, 0, 0),
 ('book2', 'riazi2', 'riaziat', 100000, 0, 0),
-('book3', 'tarahi', 'honar', 200000, 0, 0);
+('book3', 'tarahi', 'honar', 200000, 0, 0),
+('book4', 'tahlil tarahi', 'computer', 200000, 1, 1);
 
 -- --------------------------------------------------------
 
