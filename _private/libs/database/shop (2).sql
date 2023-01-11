@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 10, 2023 at 08:33 PM
+-- Generation Time: Jan 10, 2023 at 11:59 PM
 -- Server version: 5.7.40
 -- PHP Version: 8.0.26
 
@@ -33,6 +33,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CheckUserPass` (IN `p_username` VAR
 
 DROP PROCEDURE IF EXISTS `GetAllUsers`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GetAllUsers` ()   SELECT * FROM user$$
+
+DROP PROCEDURE IF EXISTS `getNameByUsername`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getNameByUsername` (IN `p_username` VARCHAR(255))   SELECT `user`.`firstname` FROM user where `user`.`username` = p_username$$
 
 DROP PROCEDURE IF EXISTS `IsUsernameExist`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `IsUsernameExist` (IN `p_username` VARCHAR(255))   SELECT * FROM user WHERE user.`username` = p_username$$
@@ -107,7 +110,8 @@ INSERT INTO `user` (`username`, `password`, `firstname`, `lastname`, `phonenumbe
 ('user1', '1111', 'ali', 'khalili', '09909999999'),
 ('user2', '1111', 'amir', 'amiri', '099088888888'),
 ('user3', '81dc9bdb52d04dc20036dbd8313ed055', 'yasin', 'yasiin', '09999999'),
-('mmd', '6512bd43d9caa6e02c990b0a82652dca', 'محمد', 'جعفری', '09123456789');
+('mmd', '6512bd43d9caa6e02c990b0a82652dca', 'محمد', 'جعفری', '09123456789'),
+('amirhosain', '1111', 'amir', 'h', '0907');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
