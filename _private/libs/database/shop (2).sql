@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 11, 2023 at 12:07 AM
+-- Generation Time: Jan 11, 2023 at 12:18 AM
 -- Server version: 5.7.40
 -- PHP Version: 8.0.26
 
@@ -45,6 +45,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `registerUser` (IN `p_username` VARC
 
 DROP PROCEDURE IF EXISTS `searchBook`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `searchBook` (IN `BookName` VARCHAR(255))   SELECT * FROM book WHERE `book`.`name` = BookName$$
+
+DROP PROCEDURE IF EXISTS `SearchBookByCategory`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchBookByCategory` (IN `s_category` VARCHAR(255))   SELECT * FROM book WHERE `book`.`category` = s_category$$
 
 DELIMITER ;
 
