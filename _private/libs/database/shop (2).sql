@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 10, 2023 at 11:59 PM
+-- Generation Time: Jan 11, 2023 at 12:07 AM
 -- Server version: 5.7.40
 -- PHP Version: 8.0.26
 
@@ -42,6 +42,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `IsUsernameExist` (IN `p_username` V
 
 DROP PROCEDURE IF EXISTS `registerUser`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `registerUser` (IN `p_username` VARCHAR(255), IN `p_firstname` VARCHAR(255), IN `p_lastname` VARCHAR(255), IN `p_phonenumber` VARCHAR(20), IN `p_password` VARCHAR(255))   INSERT INTO user(user.`username`, user.`firstname`, user.`lastname`, user.`phonenumber`, user.`password`) VALUES(p_username, p_firstname, p_lastname, p_phonenumber, p_password )$$
+
+DROP PROCEDURE IF EXISTS `searchBook`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchBook` (IN `BookName` VARCHAR(255))   SELECT * FROM book WHERE `book`.`name` = BookName$$
 
 DELIMITER ;
 
