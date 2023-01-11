@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 11, 2023 at 12:18 AM
+-- Generation Time: Jan 11, 2023 at 01:00 AM
 -- Server version: 5.7.40
 -- PHP Version: 8.0.26
 
@@ -49,6 +49,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `searchBook` (IN `BookName` VARCHAR(
 DROP PROCEDURE IF EXISTS `SearchBookByCategory`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchBookByCategory` (IN `s_category` VARCHAR(255))   SELECT * FROM book WHERE `book`.`category` = s_category$$
 
+DROP PROCEDURE IF EXISTS `UpdateBook`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateBook` (IN `b_username` VARCHAR(255), IN `b_name` VARCHAR(255), IN `b_category` VARCHAR(255), IN `b_price` FLOAT(50), IN `b_count` INT(30), IN `b_isActivate` BOOLEAN)   UPDATE book SET `book`.`book_id` = b_username , `book`.`name` = b_name ,`book`.`category` = b_category ,`book`.`price` = b_price , `book`.`count` = b_count ,`book`.`is_active` = b_isActivate WHERE book.book_id = b_username$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -62,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `book` (
   `book_id` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `price` int(30) NOT NULL,
+  `price` float NOT NULL,
   `count` int(10) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   PRIMARY KEY (`book_id`)
@@ -76,7 +79,8 @@ INSERT INTO `book` (`book_id`, `name`, `category`, `price`, `count`, `is_active`
 ('book1', 'riazi1', 'riaziat', 700000, 0, 0),
 ('book2', 'riazi2', 'riaziat', 100000, 0, 0),
 ('book3', 'tarahi', 'honar', 200000, 0, 0),
-('book4', 'tahlil tarahi', 'computer', 200000, 1, 1);
+('book4', 'tahlil tarahi', 'computer', 200000, 1, 1),
+('b4', 'shimi2', 'paye', 125000, 2, 1);
 
 -- --------------------------------------------------------
 
