@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 11, 2023 at 01:00 AM
+-- Generation Time: Jan 13, 2023 at 05:58 AM
 -- Server version: 5.7.40
 -- PHP Version: 8.0.26
 
@@ -52,6 +52,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SearchBookByCategory` (IN `s_catego
 DROP PROCEDURE IF EXISTS `UpdateBook`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateBook` (IN `b_username` VARCHAR(255), IN `b_name` VARCHAR(255), IN `b_category` VARCHAR(255), IN `b_price` FLOAT(50), IN `b_count` INT(30), IN `b_isActivate` BOOLEAN)   UPDATE book SET `book`.`book_id` = b_username , `book`.`name` = b_name ,`book`.`category` = b_category ,`book`.`price` = b_price , `book`.`count` = b_count ,`book`.`is_active` = b_isActivate WHERE book.book_id = b_username$$
 
+DROP PROCEDURE IF EXISTS `UpdateUserInfo`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateUserInfo` (IN `p_usernamechages` VARCHAR(255), IN `p_usernameUpdateTo` VARCHAR(255), IN `p_password` VARCHAR(255), IN `p_firstname` VARCHAR(255), IN `p_lastname` VARCHAR(255), IN `p_phonenumber` VARCHAR(20))   UPDATE user SET `user`.`username` = p_usernameUpdateTo , `user`.`password` = P_password , `user`.`firstname` = p_firstname , `user`.`lastname` = p_lastname , `user`.`phonenumber` = p_phonenumber WHERE `user`.`username` = p_usernamechages$$
+
 DELIMITER ;
 
 -- --------------------------------------------------------
@@ -80,7 +83,8 @@ INSERT INTO `book` (`book_id`, `name`, `category`, `price`, `count`, `is_active`
 ('book2', 'riazi2', 'riaziat', 100000, 0, 0),
 ('book3', 'tarahi', 'honar', 200000, 0, 0),
 ('book4', 'tahlil tarahi', 'computer', 200000, 1, 1),
-('b4', 'shimi2', 'paye', 125000, 2, 1);
+('b4', 'shimi2', 'paye', 125000, 2, 1),
+('b5', 'tahlil tarahi', 'computer', 600000, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +125,8 @@ INSERT INTO `user` (`username`, `password`, `firstname`, `lastname`, `phonenumbe
 ('user2', '1111', 'amir', 'amiri', '099088888888'),
 ('user3', '81dc9bdb52d04dc20036dbd8313ed055', 'yasin', 'yasiin', '09999999'),
 ('mmd', '6512bd43d9caa6e02c990b0a82652dca', 'محمد', 'جعفری', '09123456789'),
-('amirhosain', '1111', 'amir', 'h', '0907');
+('amirhosain', '1111', 'amir', 'h', '0907'),
+('u1u1', '1111', 'mmd', 'mmdy', '9876543210');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
